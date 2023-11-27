@@ -1,0 +1,27 @@
+<!-- Include qrcode.js library -->
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+<!-- qrcodes.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generated QR Codes</title>
+  <link rel="stylesheet" type="text/css" href="/styles/qrcodes.css">
+
+</head>
+<body>
+  <h1>Generated QR Codes</h1>
+
+  <% for (let i = 0; i < numQRCodes; i++) { %>
+    <div id="qrcode<%= i %>"></div>
+    <script>
+      // Use qrcode.js to generate QR code for each iteration
+      new QRCode(document.getElementById("qrcode<%= i %>"), "<%= `${domain}/${startingNumber + i}` %>");
+    </script>
+  <% } %>
+
+</body>
+</html>

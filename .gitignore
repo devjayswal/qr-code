@@ -1,0 +1,50 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files and temp files
+*.log
+*.tmp
+
+# Ignore compiled binaries
+*.class
+*.jar
+*.war
+*.ear
+
+# Ignore IntelliJ IDEA project files
+.idea/
+
+# Ignore Visual Studio Code project files
+.vscode/
+
+# Ignore environment-specific files
+.env
+.env.local
+.env.*.local
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore user-specific files
+*.sublime-project
+*.sublime-workspace
+Thumbs.db
+Desktop.ini
+
+# Ignore Jekyll build directory
+_site/
+
+# Ignore generated files
+*.html
+*.css
+*.js
+
+# Ignore compiled Python bytecode
+__pycache__/
+*.pyc
+
+# Ignore compiled Java bytecode
+*.class
+
+# Ignore compiled Ruby bytecode
+*.rbc
