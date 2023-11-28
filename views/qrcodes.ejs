@@ -1,6 +1,3 @@
-<!-- Include qrcode.js library -->
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-
 <!-- qrcodes.ejs -->
 
 <!DOCTYPE html>
@@ -10,18 +7,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generated QR Codes</title>
   <link rel="stylesheet" type="text/css" href="/styles/qrcodes.css">
-
+  <!-- Include qrcode.js library -->
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
   <h1>Generated QR Codes</h1>
 
-  <% for (let i = 0; i < numQRCodes; i++) { %>
-    <div id="qrcode<%= i %>"></div>
-    <script>
-      // Use qrcode.js to generate QR code for each iteration
-      new QRCode(document.getElementById("qrcode<%= i %>"), "<%= `${domain}/${startingNumber + i}` %>");
-    </script>
-  <% } %>
+  <div class="qrcode-container">
+    <% for (let i = 0; i < numQRCodes; i++) { %>
+      <main>
+        <div class="qrcode-banner">
+          <img class="klogo" src="./images/kisannpe_icon.png" alt="KisaanPe Logo" class="qrcode-logo">
+          <p class="qrcode-text">KisaanPe</p>
+        </div>
+        <div class="qrcode-item" id="qrcode<%= i %>">
+          
+        </div>
+        <div class="qrcode-scan">Scan Now</div>
+      </main>
 
+      <script>
+        // Use qrcode.js to generate QR code for each iteration
+        var qrcode = new QRCode(document.getElementById("qrcode<%= i %>"), "<%= `${domain}/${startingNumber + i}` %>");
+
+        // Insert the logo in the center
+        var logoImg = new Image();
+        logoImg.src = './images/kisannpe_icon.png'; // Replace with the actual path to your logo
+        logoImg.onload = function() {
+          var canvas = document.getElementById("qrcode<%= i %>").getElementsByTagName('canvas')[0];
+          var context = canvas.getContext('2d');
+          var centerX = canvas.width / 2;
+          var centerY = canvas.height / 2;
+          var logoSize = 50; // Adjust the size of the logo as needed
+          context.drawImage(logoImg, centerX - logoSize / 2, centerY - logoSize / 2, logoSize, logoSize);
+        };
+        </script>
+    <% } %>
+  </div>
 </body>
 </html>
